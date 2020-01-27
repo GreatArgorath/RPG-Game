@@ -1,0 +1,84 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Player/Player Character-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Player/Player Character-Sheet Normal.png" type="Texture" id=3]
+[ext_resource path="res://Animations/IdleBack.tres" type="Animation" id=4]
+[ext_resource path="res://Textures/Player/Player.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/IdleLeft.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/IdleLeftUp.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/IdleRight.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/IdleRightUp.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/WalkBack.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/WalkFront.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/WalkLeft.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/WalkLeftUp.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/WalkRight.tres" type="Animation" id=14]
+[ext_resource path="res://Textures/General/icon.png" type="Texture" id=15]
+[ext_resource path="res://RotationControl.gd" type="Script" id=16]
+
+
+
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.87919, 12.0559 )
+
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 10, 11 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 5, 5 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.0852585, 3.87811 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+vframes = 5
+hframes = 5
+frame = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+pause_mode = 1
+playback_speed = 1.25
+anims/IdleBack = ExtResource( 4 )
+anims/IdleFront = ExtResource( 5 )
+anims/IdleLeft = ExtResource( 6 )
+anims/IdleLeftUp = ExtResource( 7 )
+anims/IdleRight = ExtResource( 8 )
+anims/IdleRightUp = ExtResource( 9 )
+anims/WalkBack = ExtResource( 10 )
+anims/WalkFront = ExtResource( 11 )
+anims/WalkLeft = ExtResource( 12 )
+anims/WalkLeftUp = ExtResource( 13 )
+anims/WalkRight = ExtResource( 14 )
+anims/WalkRightUp = SubResource( 2 )
+
+[node name="RotationControl" type="Sprite" parent="Sprite"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 15 )
+script = ExtResource( 16 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
