@@ -2,7 +2,21 @@ extends KinematicBody2D
 export (int) var speed = 150
 var lastDirection = "front"
 var velocity = Vector2()
+func lastDirection():
+	if lastDirection == "front":
+			$Sprite/AnimationPlayer.play("IdleFront")
+	if lastDirection == "back":
+			$Sprite/AnimationPlayer.play("IdleBack")
+	if lastDirection == "left":
+			$Sprite/AnimationPlayer.play("IdleLeft")
+	if lastDirection == "right":
+			$Sprite/AnimationPlayer.play("IdleRight")
+	if lastDirection == "LeftUp":
+			$Sprite/AnimationPlayer.play("IdleLeftUp")
+	if lastDirection == "RightUp":
+			$Sprite/AnimationPlayer.play("IdleRightUp")
 func aim():
+	# Takes rotation value of invisible sprite and changes animation depending on the value.
 	if Input.is_action_pressed("Aim"):
 		var aimDirection = $Sprite/RotationControl.test()
 		if aimDirection < -0.375 and aimDirection > -1.125:
@@ -33,6 +47,7 @@ func aimMoving():
 		if aimDirection > 1.125 and aimDirection < 1.9:
 			lastDirection = "front"
 func animationCheck():
+	# Checks the velocity of the player sprite and changes animation depending on the value
 	if velocity.x == 1 and velocity.y == 1:
 		aim()
 		$Sprite/AnimationPlayer.play("WalkRight")
@@ -61,19 +76,9 @@ func animationCheck():
 		$Sprite/AnimationPlayer.play("WalkLeft")
 	if velocity.x == 0 and velocity.y == 0:
 		$Sprite/AnimationPlayer.play()
-		if lastDirection == "front":
-			$Sprite/AnimationPlayer.play("IdleFront")
-		if lastDirection == "back":
-			$Sprite/AnimationPlayer.play("IdleBack")
-		if lastDirection == "left":
-			$Sprite/AnimationPlayer.play("IdleLeft")
-		if lastDirection == "right":
-			$Sprite/AnimationPlayer.play("IdleRight")
-		if lastDirection == "LeftUp":
-			$Sprite/AnimationPlayer.play("IdleLeftUp")
-		if lastDirection == "RightUp":
-			$Sprite/AnimationPlayer.play("IdleRightUp")
+		lastDirection()
 func get_input():
+	# Checks for different input and changes velocity depending
 	velocity = Vector2()
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
@@ -107,4 +112,3 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
-

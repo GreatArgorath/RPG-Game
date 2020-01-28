@@ -17,11 +17,6 @@
 [ext_resource path="res://Textures/General/icon.png" type="Texture" id=15]
 [ext_resource path="res://RotationControl.gd" type="Script" id=16]
 
-
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.87919, 12.0559 )
 
