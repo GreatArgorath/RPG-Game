@@ -30,6 +30,7 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 
 window/size/width=426
 window/size/height=240
+window/size/fullscreen=true
 window/size/test_width=1920
 window/size/test_height=1080
 mouse_cursor/custom_image="res://Textures/UI/Cursor.png"

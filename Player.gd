@@ -133,6 +133,6 @@ func get_input():
 	aim()
 	animationCheck()
 	velocity = velocity.normalized() * speed
-func _physics_process(delta):
+func _physics_process(delta): 
 	get_input()
 	velocity = move_and_slide(velocity)
