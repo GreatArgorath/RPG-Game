@@ -2,6 +2,20 @@ extends KinematicBody2D
 export (int) var speed = 150
 var lastDirection = "front"
 var velocity = Vector2()
+func aimDirection():
+	var aimDirection = $Sprite/RotationControl.test()
+	if aimDirection < -0.375 and aimDirection > -1.25:
+		$Sprite/AnimationPlayer.play("WalkRightUp")
+	if aimDirection > 0.375 and aimDirection < 1.125:
+		$Sprite/AnimationPlayer.play("WalkRight")
+	if aimDirection > -2.71 and aimDirection < -1.9:
+		$Sprite/AnimationPlayer.play("WalkLeftUp")
+	if aimDirection < 2.71 and aimDirection > 1.9:
+		$Sprite/AnimationPlayer.play("WalkLeft")
+	if aimDirection < -1.125 and aimDirection > -1.9:
+		$Sprite/AnimationPlayer.play("WalkBack")
+	if aimDirection > 1.125 and aimDirection < 1.9:
+		$Sprite/AnimationPlayer.play("WalkFront")
 func lastDirection():
 	if lastDirection == "front":
 			$Sprite/AnimationPlayer.play("IdleFront")
@@ -31,49 +45,50 @@ func aim():
 			lastDirection = "back"
 		if aimDirection > 1.125 and aimDirection < 1.9:
 			lastDirection = "front"
-func aimMoving():
-	if Input.is_action_pressed("Aim"):
-		var aimDirection = $Sprite/RotationControl.test()
-		if aimDirection < -0.375 and aimDirection > -1.125:
-			lastDirection = "rightUp"
-		if aimDirection > 0.375 and aimDirection < 1.125:
-			lastDirection = "right"
-		if aimDirection > -2.71 and aimDirection < -1.9:
-			lastDirection = "LeftUp"
-		if aimDirection < 2.71 and aimDirection > 1.9:
-			lastDirection = "left"
-		if aimDirection < -1.125 and aimDirection > -1.9:
-			lastDirection = "back"
-		if aimDirection > 1.125 and aimDirection < 1.9:
-			lastDirection = "front"
 func animationCheck():
 	# Checks the velocity of the player sprite and changes animation depending on the value
 	if velocity.x == 1 and velocity.y == 1:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkRight")
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkRight")
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == -1 and velocity.y == 1:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkLeft")
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkLeft")
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == 0 and velocity.y == 1:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkFront")
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkFront")
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == 1 and velocity.y == -1:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkRightUp")
-		lastDirection = "RightUp"
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkRightUp")
+			lastDirection = "RightUp"
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == -1 and velocity.y == -1:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkLeftUp")
-		lastDirection = "LeftUp"
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkLeftUp")
+			lastDirection = "LeftUp"
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == 0 and velocity.y == -1:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkBack")
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkBack")
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == 1 and velocity.y == 0:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkRight")
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkRight")
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == -1 and velocity.y == 0:
-		aim()
-		$Sprite/AnimationPlayer.play("WalkLeft")
+		if not Input.is_action_pressed("Aim"):
+			$Sprite/AnimationPlayer.play("WalkLeft")
+		if Input.is_action_pressed("Aim"):
+			aimDirection()
 	if velocity.x == 0 and velocity.y == 0:
 		$Sprite/AnimationPlayer.play()
 		lastDirection()
