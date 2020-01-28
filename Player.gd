@@ -4,13 +4,22 @@ var lastDirection = "front"
 var velocity = Vector2()
 func aimDirection():
 	var aimDirection = $Sprite/RotationControl.test()
+	print(aimDirection)
 	if aimDirection < -0.375 and aimDirection > -1.25:
 		$Sprite/AnimationPlayer.play("WalkRightUp")
 	if aimDirection > 0.375 and aimDirection < 1.125:
 		$Sprite/AnimationPlayer.play("WalkRight")
+	if aimDirection < 0.375 and aimDirection > 0:
+		$Sprite/AnimationPlayer.play("WalkRight")
+	if aimDirection > -0.375 and aimDirection < 0:
+		$Sprite/AnimationPlayer.play("WalkRight")
 	if aimDirection > -2.71 and aimDirection < -1.9:
 		$Sprite/AnimationPlayer.play("WalkLeftUp")
 	if aimDirection < 2.71 and aimDirection > 1.9:
+		$Sprite/AnimationPlayer.play("WalkLeft")
+	if aimDirection < -2.71 and aimDirection > -3.125:
+		$Sprite/AnimationPlayer.play("WalkLeft")
+	if aimDirection > 2.71 and aimDirection < 3.125:
 		$Sprite/AnimationPlayer.play("WalkLeft")
 	if aimDirection < -1.125 and aimDirection > -1.9:
 		$Sprite/AnimationPlayer.play("WalkBack")
