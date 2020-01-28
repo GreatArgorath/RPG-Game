@@ -21,22 +21,24 @@ show_behind_parent = true
 occluder = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 147.83, 107.709 )
-scale = Vector2( 3.06044, 3.06044 )
+visible = false
+position = Vector2( 141.166, 115.335 )
 texture = ExtResource( 2 )
+texture_scale = 2.94
 color = Color( 1, 0.470588, 0, 0.219608 )
 energy = 2.0
 shadow_enabled = true
-shadow_filter_smooth = 4.8
+shadow_filter = 1
+shadow_filter_smooth = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Light2D"]
+visible = false
 position = Vector2( -48.3035, -35.194 )
 scale = Vector2( 0.32675, 0.32675 )
 color = Color( 0.498039, 0.494118, 0.635294, 1 )
 
 [node name="Sprite" type="Sprite" parent="Light2D"]
 position = Vector2( -0.561066, 0.386948 )
-scale = Vector2( 0.274484, 0.274484 )
 texture = ExtResource( 3 )
 hframes = 13
 
