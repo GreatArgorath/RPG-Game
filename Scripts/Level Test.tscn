@@ -1,13 +1,77 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/Torchlight.png" type="Texture" id=2]
-[ext_resource path="res://Textures/TorchSheet.png" type="Texture" id=3]
+[ext_resource path="res://Textures/General/TorchSheet.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tileset/Tileset.tres" type="TileSet" id=4]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 cull_mode = 1
 polygon = PoolVector2Array( -4.0862, -5.96797, 4.88818, -5.9341, 7.80061, -2.95393, 7.90221, 3.95464, 5.1591, 6.02043, 6.92009, 9.81339, 5.93799, 11.7099, 2.82236, 12.5565, -2.79932, 12.7597, -6.52452, 10.5923, -4.72966, 7.10414, -1.88495, 5.81725, -7.5405, 2.76935, -7.06638, -2.88618 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 1.48337, 8.0698 )
+
+[sub_resource type="Curve" id=2]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, -360 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.985185 )
+colors = PoolColorArray( 1, 0.234375, 0, 1, 1, 0.609375, 0, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.588 ), 0.0, -0.0879999, 0, 1, Vector2( 1, 0.5 ), -0.0879999, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+trail_divisor = 2
+trail_size_modifier = SubResource( 7 )
+trail_color_modifier = SubResource( 5 )
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+spread = 7.76
+gravity = Vector3( 0, -60, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+angle_curve = SubResource( 3 )
+scale = 5.0
+hue_variation = 1.0
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.985185 )
+colors = PoolColorArray( 0.210938, 0.210938, 0.210938, 1, 0.226563, 0.226563, 0.226563, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+trail_size_modifier = SubResource( 14 )
+trail_color_modifier = SubResource( 11 )
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.356863, 0.356863, 0.356863, 1 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -1.16635, 4.66541 )
@@ -21,7 +85,6 @@ show_behind_parent = true
 occluder = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
-visible = false
 position = Vector2( 141.166, 115.335 )
 texture = ExtResource( 2 )
 texture_scale = 2.94
@@ -31,16 +94,33 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Light2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Light2D/StaticBody2D"]
+position = Vector2( 0.726151, 6.37686 )
+shape = SubResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="Light2D/StaticBody2D"]
+position = Vector2( -0.805237, -1.68854 )
+texture = ExtResource( 3 )
+hframes = 13
+
 [node name="CanvasModulate" type="CanvasModulate" parent="Light2D"]
-visible = false
 position = Vector2( -48.3035, -35.194 )
 scale = Vector2( 0.32675, 0.32675 )
 color = Color( 0.498039, 0.494118, 0.635294, 1 )
 
-[node name="Sprite" type="Sprite" parent="Light2D"]
-position = Vector2( -0.561066, 0.386948 )
-texture = ExtResource( 3 )
-hframes = 13
+[node name="Particles2D" type="Particles2D" parent="Light2D"]
+position = Vector2( 1.09914, -3.04148 )
+process_material = SubResource( 8 )
+
+[node name="Particles2D2" type="Particles2D" parent="Light2D"]
+position = Vector2( 1.09914, -3.04148 )
+process_material = SubResource( 8 )
+
+[node name="Particles2D3" type="Particles2D" parent="Light2D"]
+position = Vector2( 1.09914, -3.04148 )
+process_material = SubResource( 12 )
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
