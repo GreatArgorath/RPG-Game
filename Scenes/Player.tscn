@@ -68,10 +68,11 @@ anims/WalkRight = ExtResource( 14 )
 anims/WalkRightUp = SubResource( 2 )
 
 [node name="RotationControl" type="Sprite" parent="Sprite"]
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 15 )
 script = ExtResource( 16 )
+
+[node name="Muzzle" type="Position2D" parent="Sprite/RotationControl"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

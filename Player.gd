@@ -1,10 +1,22 @@
 extends KinematicBody2D
+
 export (int) var speed = 150
+export var bullet_speed = 1000
+
 var lastDirection = "front"
 var velocity = Vector2()
+var Bullet = preload("res://Scenes/Bullet.tscn")
+
+func _process(delta):
+	if Input.is_action_pressed("aim") and Input.is_action_pressed("Shoot"):
+		var bullet_instance = Bullet.instance()
+		bullet_instance.position = get_global_position()
+		bullet_instance.rotation_degrees = rotation_degrees
+		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
+		get_tree().get_root().add_child(bullet_instance)
+
 func aimDirection():
 	var aimDirection = $Sprite/RotationControl.test()
-	print(aimDirection)
 	if aimDirection < -0.375 and aimDirection > -1.25:
 		$Sprite/AnimationPlayer.play("WalkRightUp")
 	if aimDirection > 0.375 and aimDirection < 1.125:
@@ -130,9 +142,17 @@ func get_input():
 		lastDirection = "LeftUp"
 	if Input.is_action_pressed("lookRight") and Input.is_action_pressed("lookUp"):
 		lastDirection = "RightUp"
+	if Input.is_action_pressed("aim") and Input.is_action_pressed("Shoot"):
+		shoot()
 	aim()
 	animationCheck()
 	velocity = velocity.normalized() * speed
+
+func shoot():
+	var b = Bullet.instance()
+	b.start($Sprite/RotationControl/Muzzle.global_position, rotation)
+	get_parent().add_child(b)
+
 func _physics_process(delta): 
 	get_input()
 	velocity = move_and_slide(velocity)
