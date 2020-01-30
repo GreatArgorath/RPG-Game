@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Player/Player Character-Sheet.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Animations/WalkRight.tres" type="Animation" id=14]
 [ext_resource path="res://Textures/General/icon.png" type="Texture" id=15]
 [ext_resource path="res://RotationControl.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Gun.gd" type="Script" id=17]
+[ext_resource path="res://Textures/Player/Gun.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.87919, 12.0559 )
@@ -73,6 +75,12 @@ position = Vector2( 0, 7.22932 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 15 )
 script = ExtResource( 16 )
+
+[node name="Gun" type="Sprite" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, 5 )
+texture = ExtResource( 18 )
+script = ExtResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
