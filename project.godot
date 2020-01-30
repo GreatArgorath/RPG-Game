@@ -111,9 +111,14 @@ Shoot={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Environment"
+2d_physics/layer_3="Bullets"
+
 [rendering]
 
-quality/2d/use_pixel_snap=true
-quality/filters/anisotropic_filter_level=1
+quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
 quality/directional_shadow/size=256
 environment/default_environment="res://Scripts/default_env.tres"
