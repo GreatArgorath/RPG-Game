@@ -36,6 +36,7 @@ func aimDirection():
 		$Sprite/AnimationPlayer.play("WalkLeft")
 	if aimDirection < -1.125 and aimDirection > -1.9:
 		$Sprite/AnimationPlayer.play("WalkBack")
+		print(aimDirection)
 	if aimDirection > 1.125 and aimDirection < 1.9:
 		$Sprite/AnimationPlayer.play("WalkFront")
 func lastDirection():

@@ -9,8 +9,6 @@
 [ext_resource path="res://Textures/Tileset/Grass - CobbleRightUp.png" type="Texture" id=7]
 [ext_resource path="res://Textures/Tileset/Grass - CobbleLeftUp.png" type="Texture" id=8]
 
-
-
 [resource]
 0/name = "Grass"
 0/texture = ExtResource( 1 )

@@ -76,9 +76,10 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 15 )
 script = ExtResource( 16 )
 
-[node name="Gun" type="Sprite" parent="Sprite"]
+[node name="Gun" type="Sprite" parent="Sprite/RotationControl"]
 show_behind_parent = true
-position = Vector2( 0, 5 )
+position = Vector2( 0, -22.2932 )
+scale = Vector2( 10, 10 )
 texture = ExtResource( 18 )
 script = ExtResource( 17 )
 
