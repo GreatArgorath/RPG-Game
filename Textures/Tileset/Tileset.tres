@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=2]
+[gd_resource type="TileSet" load_steps=12 format=2]
 
 [ext_resource path="res://Textures/Tileset/GrassTexture.png" type="Texture" id=1]
 [ext_resource path="res://Textures/Tileset/Cobble.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Textures/Tileset/Grass - CobbleLeft.png" type="Texture" id=6]
 [ext_resource path="res://Textures/Tileset/Grass - CobbleRightUp.png" type="Texture" id=7]
 [ext_resource path="res://Textures/Tileset/Grass - CobbleLeftUp.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Tileset/Cobble Var2.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Tileset/Cobble Var1.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Tileset/Cobble Var3.png" type="Texture" id=11]
 
 [resource]
 0/name = "Grass"
@@ -90,3 +93,33 @@
 7/navigation_offset = Vector2( 16, 16 )
 7/shapes = [  ]
 7/z_index = 0
+8/name = "Cobble Var1"
+8/texture = ExtResource( 10 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 32, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 16, 16 )
+8/navigation_offset = Vector2( 16, 16 )
+8/shapes = [  ]
+8/z_index = 0
+9/name = "Cobble Var2"
+9/texture = ExtResource( 9 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 16, 16 )
+9/navigation_offset = Vector2( 16, 16 )
+9/shapes = [  ]
+9/z_index = 0
+10/name = "Cobble Var3"
+10/texture = ExtResource( 11 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 16, 16 )
+10/navigation_offset = Vector2( 16, 16 )
+10/shapes = [  ]
+10/z_index = 0

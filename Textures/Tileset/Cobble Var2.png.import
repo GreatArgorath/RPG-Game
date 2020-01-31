@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cobble.png-514ad6e077cec2832f5a3d3903322cac.stex"
+path="res://.import/Cobble Var2.png-f476415ad95fcccffd421de5c47c04ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tileset/Cobble.png"
-dest_files=[ "res://.import/Cobble.png-514ad6e077cec2832f5a3d3903322cac.stex" ]
+source_file="res://Textures/Tileset/Cobble Var2.png"
+dest_files=[ "res://.import/Cobble Var2.png-f476415ad95fcccffd421de5c47c04ce.stex" ]
 
 [params]
 

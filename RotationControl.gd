@@ -5,7 +5,7 @@ func _process(delta):
 	look_at(mpos)
 
 var Bullet = preload("res://Scenes/Bullet.tscn")
-var bulletSpeed = 100
+var bulletSpeed = 200
 var timesShot = 0
 	
 func shoot():
