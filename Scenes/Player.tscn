@@ -20,7 +20,7 @@
 [ext_resource path="res://Textures/Player/Gun.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.87919, 12.0559 )
+extents = Vector2( 15.5281, 2.92673 )
 
 [sub_resource type="Animation" id=2]
 length = 0.2
@@ -42,8 +42,7 @@ scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0.0852585, 3.87811 )
+position = Vector2( -0.0315426, 25.3685 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

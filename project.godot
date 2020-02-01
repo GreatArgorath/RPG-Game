@@ -19,7 +19,8 @@ config/name="RPG Game"
 run/main_scene="res://Scripts/Level Test.tscn"
 boot_splash/image="res://Textures/Player/Player Character.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://Textures/General/icon.png"
+config/icon="res://Textures/Player/Player Character.png"
+config/windows_native_icon="res://player_character_lEM_icon.ico"
 
 [autoload]
 
